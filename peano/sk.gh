@@ -24,7 +24,7 @@ thm (rtri ()
 defthm (df-i val (i) () () (= (i) (. (. (s) (k)) (k))) 
   (. (. (s) (k)) (k))  eqid
 )
-thm (skk () ()
+thm (iid () ()
   (- (. (i) A)
      A)
      A  (. (k) A)  ax-k
@@ -37,3 +37,15 @@ thm (skk () ()
      ax-mp
 )
 
+defthm (df-t val (t) () () (= (t) (k))
+       (k)  eqid
+)
+defthm (df-f val (f) () () (= (f) (. (k) (k)))
+       (. (k) (k))  eqid
+)
+
+defthm (df-eqb wff (=b A ph) () ()
+        (<-> (=b A ph) (\/ (/\ (= A (t)) ph)
+                           (/\ (= A (f)) (-. ph))))
+  (\/ (/\ (= A (t)) ph) (/\ (= A (f)) (-. ph)))  biid
+)
