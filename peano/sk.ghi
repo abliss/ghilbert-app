@@ -1,0 +1,24 @@
+param (PROP prop.ghi () "")
+param (PRED pred-prim.ghi (PROP) "")
+
+tvar (wff ph ps ch)
+tvar (val A B C)
+var (val x y z)
+
+term (val (s))
+term (val (k))
+term (val (. A B))
+term (wff (- A B))
+stmt (ax-k () ()
+  (- (. (. (k) A) B)
+     A)) 
+stmt (ax-s () ()
+  (- (. (. (. (s) A) B) C)
+     (. (. A C) (. B C))))
+
+stmt (rtr () () (-> (- A B) (-> (- B C) (- A C))))
+stmt (req1 () () (-> (= A B) (-> (- A C) (- B C))))
+stmt (req2 () () (-> (= A B) (-> (- C A) (- C B))))
+stmt (aeq1 () () (-> (= A B) (= (. A C) (. B C))))
+stmt (aeq2 () () (-> (= A B) (= (. C A) (. C B))))
+

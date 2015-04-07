@@ -1,0 +1,38 @@
+import (PROP prop.ghi () "")
+import (PRED pred-prim.ghi (PROP) "")
+import (SK sk.ghi (PROP PRED) "")
+import (PEANO_MIN peano_min.ghi (PROP) "P")
+import (PEANO peano_ax.ghi (PROP PEANO_MIN) "P")
+import (NAIVE_SET naive_set.ghi (PROP PEANO_MIN PEANO) "P")
+import (PEANO_THMS peano_thms.ghi (PROP PEANO_MIN PEANO NAIVE_SET) "P")
+
+tvar (wff ph ps ch)
+tvar (val A B C D E F G)
+var (val x y z)
+
+thm (rtri ()
+    (h1 (- A B)
+     h2 (- B C))
+     (- A C)
+     
+   h2
+     h1
+     A  B  C  rtr  ax-mp
+   ax-mp
+)
+
+defthm (df-i val (i) () () (= (. (. (s) (k)) (k)) (i)) 
+  (. (. (s) (k)) (k))  eqid
+)
+thm (skk () ()
+  (- (. (i) A)
+     A)
+     A  (. (k) A)  ax-k
+       (k)  (k)  A  ax-s
+       (. (. (. (s) (k)) (k)) A)  (. (. (k) A) (. (k) A))  A  rtr  ax-mp    ax-mp
+       df-i
+       (. (. (s) (k)) (k))  (i)  A  aeq1    ax-mp
+       (. (. (. (s) (k)) (k)) A)  (. (i) A)  A  req1    ax-mp
+     ax-mp
+)
+
