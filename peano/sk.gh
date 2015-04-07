@@ -21,7 +21,7 @@ thm (rtri ()
    ax-mp
 )
 
-defthm (df-i val (i) () () (= (. (. (s) (k)) (k)) (i)) 
+defthm (df-i val (i) () () (= (i) (. (. (s) (k)) (k))) 
   (. (. (s) (k)) (k))  eqid
 )
 thm (skk () ()
@@ -31,6 +31,7 @@ thm (skk () ()
        (k)  (k)  A  ax-s
        (. (. (. (s) (k)) (k)) A)  (. (. (k) A) (. (k) A))  A  rtr  ax-mp    ax-mp
        df-i
+       (i)  (. (. (s) (k)) (k))  eqcom    mpbi
        (. (. (s) (k)) (k))  (i)  A  aeq1    ax-mp
        (. (. (. (s) (k)) (k)) A)  (. (i) A)  A  req1    ax-mp
      ax-mp
