@@ -49,3 +49,29 @@ defthm (df-eqb wff (=b A ph) () ()
                            (/\ (= A (f)) (-. ph))))
   (\/ (/\ (= A (t)) ph) (/\ (= A (f)) (-. ph)))  biid
 )
+
+defthm (df-and val (and) () () (= (and) (...))
+  (...) id
+)
+
+thm (andtt () () (- (. (. (and) (t)) (t)) (t))
+  ...
+) 
+thm (and () ()
+  (-> (=b A ph) (-> (=b B ps) (-> (=b C ch)
+      (-> (- (. (. (and) A) B) C)
+          (<-> (/\ A B) C)))))
+  ...
+)
+
+defthm (df-reqb  (-=b A ph) () ()
+  (E. x (/\ (- A x) (=b x ph)))
+...
+)
+
+thm (andex () ()
+  (-> (=b A ph) (-> (=b B ps)
+      (-=b (. (. (and) A) B) (/\ A B))))
+
+  ...
+)
