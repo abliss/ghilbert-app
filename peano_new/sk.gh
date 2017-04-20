@@ -1,0 +1,32 @@
+import (PROP      /peano_new/prop.ghi () "")
+import (EQ_MIN    /peano_new/eq_min.ghi (PROP) "")
+import (EQ        /peano_new/eq.ghi (PROP EQ_MIN) "")
+import (SK        /peano_new/sk.ghi (PROP EQ_MIN) "")
+
+tvar (wff ph ps ch)
+tvar (val A B C D E F G)
+
+defthm (df-i val (i) () () (= (i) (. (. (s) (k)) (k))) 
+  (. (. (s) (k)) (k))  eqid
+)
+thm (iid () ()
+  (= (. (i) A)
+     A)
+     A  (. (k) A)  ax-k
+       (k)  (k)  A  ax-s    eqcomi
+     eqtr3
+     eqcomi
+       df-i
+       (i)  (. (. (s) (k)) (k))  eqcom    mpbi
+       (. (. (s) (k)) (k))  (i)  A  aeq1    ax-mp
+       (. (. (. (s) (k)) (k)) A)  (. (i) A)  A  eqeq1    ax-mp
+     mpbi
+)
+
+defthm (df-t val (t) () () (= (t) (k))
+       (k)  eqid
+)
+defthm (df-f val (f) () () (= (f) (. (k) (k)))
+       (. (k) (k))  eqid
+)
+

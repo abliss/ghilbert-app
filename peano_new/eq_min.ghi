@@ -1,0 +1,11 @@
+param (PROP prop.ghi () "")
+
+tvar (wff ph ps ch)
+kind (val)
+tvar (val A B C)
+
+term (wff (= A B))
+
+stmt (eqid () () (= A A))
+stmt (eqcom () () (<-> (= A B) (= B A)))
+stmt (eqtr () () (-> (/\ (= A B) (= B C)) (= A C)))
