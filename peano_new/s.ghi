@@ -1,0 +1,29 @@
+param (PROP prop.ghi () "")
+param (EQ_MIN_A eq_min.ghi (PROP) "A")
+param (EQ_MIN_B eq_min.ghi (PROP) "B")
+param (EQ_MIN_C eq_min.ghi (PROP) "C")
+param (EQ_MIN_AB eq_min.ghi (PROP) "AB")
+param (EQ_MIN_BC eq_min.ghi (PROP) "BC")
+param (EQ_MIN_AC eq_min.ghi (PROP) "AC")
+param (EQ_MIN_ABC eq_min.ghi (PROP) "ABC")
+param (EQ_MIN__ABAC eq_min.ghi (PROP) "_ABAC")
+param (EQ_MIN___ABC_ABAC eq_min.ghi (PROP) "__ABC_ABAC")
+
+
+param (APPLY_AB apply.ghi (PROP EQ_MIN_A EQ_MIN_B EQ_MIN_AB) "AB")
+param (APPLY_AC apply.ghi (PROP EQ_MIN_A EQ_MIN_C EQ_MIN_AC) "AC")
+param (APPLY_BC apply.ghi (PROP EQ_MIN_B EQ_MIN_C EQ_MIN_BC) "BC")
+param (APPLY_ABC apply.ghi (PROP EQ_MIN_A EQ_MIN_BC EQ_MIN_ABC) "ABC")
+param (APPLY__ABAC apply.ghi (PROP EQ_MIN_AB EQ_MIN_AC EQ_MIN__ABAC) "_ABAC")
+param (APPLY___ABC_ABAC apply.ghi (PROP EQ_MIN_ABC EQ_MIN__ABAC EQ_MIN___ABC_ABAC) "__ABC_ABAC")
+
+tvar (Aval A1)
+tvar (ABval AB1)
+tvar (ABCval ABC1)
+
+term (__ABC_ABACval (s))
+
+
+stmt (ax-s () ()
+  (C= (AC. (_ABAC. (__ABC_ABAC. (s) ABC1) AB1) A1)
+     (BC. (ABC. ABC1 A1) (AB. AB1 A1))))

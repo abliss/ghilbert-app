@@ -1,0 +1,18 @@
+param (PROP prop.ghi () "")
+param (EQ_MIN_A eq_min.ghi (PROP) "A")
+param (EQ_MIN_B eq_min.ghi (PROP) "B")
+param (EQ_MIN_BA eq_min.ghi (PROP) "BA")
+param (EQ_MIN_ABA eq_min.ghi (PROP) "ABA")
+param (APPLY_BA apply.ghi (PROP EQ_MIN_B EQ_MIN_A EQ_MIN_BA) "BA")
+param (APPLY_ABA apply.ghi (PROP EQ_MIN_A EQ_MIN_BA EQ_MIN_ABA) "ABA")
+
+tvar (Aval A1 A2 A3)
+tvar (Bval B1 B2 B3)
+tvar (BAval BA1 BA2 BA3)
+tvar (ABAval ABA1 ABA2 ABA3)
+
+term (ABAval (k))
+
+stmt (ax-k () ()
+  (A= (BA. (ABA. (k) A1) B1)
+     A1)) 

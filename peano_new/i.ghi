@@ -1,0 +1,13 @@
+param (PROP prop.ghi () "")
+param (EQ_MIN_A eq_min.ghi (PROP) "A")
+param (EQ_MIN_AA eq_min.ghi (PROP) "AA")
+param (APPLY_AA apply.ghi (PROP EQ_MIN_A EQ_MIN_A EQ_MIN_AA) "AA")
+
+tvar (Aval A1)
+
+term (AAval (i))
+
+stmt (ax-i () ()
+     (A= (AA. (i) A1)
+         A1)
+)

@@ -1,0 +1,13 @@
+param (PROP prop.ghi () "")
+param (EQ_MIN_A eq_min.ghi (PROP) "A")
+param (EQ_MIN_B eq_min.ghi (PROP) "B")
+param (EQ_MIN_AB eq_min.ghi (PROP) "AB")
+
+tvar (Aval A1 A2 A3)
+tvar (Bval B1 B2 B3)
+tvar (ABval AB1 AB2 AB3)
+
+term (Bval (. AB1 A1))
+
+stmt (deq1 () () (-> (AB= AB1 AB2) (B= (. AB1 A1) (. AB2 A1))))
+stmt (deq2 () () (-> (A= A1 A2) (B= (. AB1 A1) (. AB1 A2))))

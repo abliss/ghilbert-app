@@ -1,32 +1,85 @@
 import (PROP      /peano_new/prop.ghi () "")
-import (EQ_MIN    /peano_new/eq_min.ghi (PROP) "")
-import (EQ        /peano_new/eq.ghi (PROP EQ_MIN) "")
-import (SK        /peano_new/sk.ghi (PROP EQ_MIN) "")
 
-tvar (wff ph ps ch)
-tvar (val A B C D E F G)
+import (EQ_MIN_ABA    /peano_new/eq_min.ghi (PROP) "ABA")
+import (EQ_MIN_AA    /peano_new/eq_min.ghi (PROP) "AA")
+import (EQ_MIN___ABAAA    /peano_new/eq_min.ghi (PROP) "__ABAAA")
+import (APPLY___ABAAA /peano_new/apply.ghi (PROP EQ_MIN_ABA EQ_MIN_AA EQ_MIN___ABAAA) "__ABAAA")
 
-defthm (df-i val (i) () () (= (i) (. (. (s) (k)) (k))) 
-  (. (. (s) (k)) (k))  eqid
+import (EQ_MIN_A_BAA    /peano_new/eq_min.ghi (PROP) "_A_BAA")
+#import (EQ_MIN___ABAAA    /peano_new/eq_min.ghi (PROP) n"__ABAAA")
+import (EQ_MIN___A_BAA__ABAAA    /peano_new/eq_min.ghi (PROP) "__A_BAA__ABAAA")
+import (APPLY___A_BAA__ABAAA /peano_new/apply.ghi (PROP EQ_MIN_A_BAA EQ_MIN___ABAAA EQ_MIN___A_BAA__ABAAA) "__A_BAA__ABAAA")
+
+import (EQ_MIN_A    /peano_new/eq_min.ghi (PROP) "A")
+#import (EQ_MIN_AA    /peano_new/eq_min.ghi (PROP) "AA")
+import (APPLY_AA /peano_new/apply.ghi (PROP EQ_MIN_A EQ_MIN_A EQ_MIN_AA) "AA")
+
+
+import (EQ_MIN_B    /peano_new/eq_min.ghi (PROP) "B")
+#import (EQ_MIN_A    /peano_new/eq_min.ghi (PROP) "A")
+import (EQ_MIN_BA    /peano_new/eq_min.ghi (PROP) "BA")
+import (APPLY_BA /peano_new/apply.ghi (PROP EQ_MIN_B EQ_MIN_A EQ_MIN_BA) "BA")
+
+#import (EQ_MIN_A    /peano_new/eq_min.ghi (PROP) "A")
+#import (EQ_MIN_BA    /peano_new/eq_min.ghi (PROP) "BA")
+#import (EQ_MIN_ABA    /peano_new/eq_min.ghi (PROP) "ABA")
+import (APPLY_ABA /peano_new/apply.ghi (PROP EQ_MIN_A EQ_MIN_BA EQ_MIN_ABA) "ABA")
+
+import (K_ABA /peano_new/k.ghi (PROP EQ_MIN_A EQ_MIN_B EQ_MIN_BA EQ_MIN_ABA APPLY_BA APPLY_ABA) "ABA")
+
+import (EQ_MIN__BAA    /peano_new/eq_min.ghi (PROP) "_BAA")
+import (APPLY__BAA /peano_new/apply.ghi (PROP EQ_MIN_BA EQ_MIN_A EQ_MIN__BAA) "_BAA")
+
+#import (EQ_MIN__BAA    /peano_new/eq_min.ghi (PROP) "BAA")
+#import (EQ_MIN_A_BAA    /peano_new/eq_min.ghi (PROP) "A_BAA")
+import (APPLY_A_BAA /peano_new/apply.ghi (PROP EQ_MIN_A EQ_MIN__BAA EQ_MIN_A_BAA) "_A_BAA")
+
+import (K_A_BAA /peano_new/k.ghi (PROP EQ_MIN_A EQ_MIN_BA EQ_MIN__BAA EQ_MIN_A_BAA APPLY__BAA APPLY_A_BAA) "A_BAA")
+
+
+#import (EQ_MIN__ABAAA    /peano_new/eq_min.ghi (PROP) "_ABAAA")
+#import (APPLY___A_BAA__ABAAA /peano_new/apply.ghi (PROP EQ_MIN_A_BAA EQ_MIN__ABAAA EQ_MIN___A_BAA__ABAAA) "__A_BAA__ABAAA")
+
+
+import (S___A_BAA__ABAAA /peano_new/s.ghi (PROP
+  EQ_MIN_A EQ_MIN_BA EQ_MIN_A
+  EQ_MIN_ABA EQ_MIN__BAA EQ_MIN_AA
+  EQ_MIN_A_BAA
+  EQ_MIN___ABAAA
+  EQ_MIN___A_BAA__ABAAA
+  APPLY_ABA
+  APPLY_AA
+  APPLY__BAA
+  APPLY_A_BAA
+  APPLY___ABAAA
+  APPLY___A_BAA__ABAAA) "__A_BAA__ABAAA")
+
+
+import (EQ_A    /peano_new/eq.ghi (PROP EQ_MIN_A) "A")
+import (EQ_AA    /peano_new/eq.ghi (PROP EQ_MIN_AA) "AA")
+
+tvar (Aval A1)
+
+defthm (df-i AAval (i) () ()
+  (AA= (i)
+       (__ABAAA. (__A_BAA__ABAAA. (__A_BAA__ABAAAs) (A_BAAk)) (ABAk))) 
+
+  (__ABAAA. (__A_BAA__ABAAA. (__A_BAA__ABAAAs) (A_BAAk)) (ABAk))  AAeqid
 )
-thm (iid () ()
-  (= (. (i) A)
-     A)
-     A  (. (k) A)  ax-k
-       (k)  (k)  A  ax-s    eqcomi
-     eqtr3
-     eqcomi
+
+thm (ax-i () ()
+    (A= (AA. (i) A1)
+        A1)
+     A1  (ABA. (ABAk) A1)  A_BAAax-k
+       (A_BAAk)  (ABAk)  A1  __A_BAA__ABAAAax-s    Aeqcomi
+     Aeqtr3
+     Aeqcomi
        df-i
-       (i)  (. (. (s) (k)) (k))  eqcom    mpbi
-       (. (. (s) (k)) (k))  (i)  A  aeq1    ax-mp
-       (. (. (. (s) (k)) (k)) A)  (. (i) A)  A  eqeq1    ax-mp
+       (i)  (__ABAAA. (__A_BAA__ABAAA. (__A_BAA__ABAAAs) (A_BAAk)) (ABAk))  AAeqcom    mpbi
+       (__ABAAA. (__A_BAA__ABAAA. (__A_BAA__ABAAAs) (A_BAAk)) (ABAk))  (i)  A1  AAdeq1    ax-mp
+       (AA. (__ABAAA. (__A_BAA__ABAAA. (__A_BAA__ABAAAs) (A_BAAk)) (ABAk)) A1)  (AA. (i) A1)  A1  Aeqeq1    ax-mp
      mpbi
 )
 
-defthm (df-t val (t) () () (= (t) (k))
-       (k)  eqid
-)
-defthm (df-f val (f) () () (= (f) (. (k) (k)))
-       (. (k) (k))  eqid
-)
+export (i /peano_new/i.ghi (PROP EQ_MIN_A EQ_MIN_AA APPLY_AA) "")
 
